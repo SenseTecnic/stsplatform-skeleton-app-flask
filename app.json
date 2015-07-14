@@ -1,0 +1,6 @@
+{
+  "name": "stsplatform-skeleton-app-flask",
+  "description": "A Flask skeleton app using the STS Platform",
+  "repository": "https://github.com/SenseTecnic/stsplatform-skeleton-app-flask",
+  "keywords": ["python", "flask", "stsplatform"]
+}
