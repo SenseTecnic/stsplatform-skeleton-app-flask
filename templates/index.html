@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>WoTKit Application Template</title>
+
+    <!-- Bootstrap -->
+    <!--For more info on Bootstrap visit http://getbootstrap.com/getting-started/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container">
+
+      <!-- You might want to replace this with a Nav -->
+      <h1>WoTKit App</h1>
+
+      <!-- Set credentials button triggering modal -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#credentialsModal">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Set Credentials
+      </button>
+      <p id="auth-response"></p>
+
+      <!-- Creating/Deleting Sensors -->
+      <div class="row">
+
+        <!-- Sending, retrieving some data -->
+        <div class="col-lg-6">
+          <h3>Send/Retrieve Data</h3>
+          <form data-async data-target="#server-response" action="/data" method="POST">
+          <div class="input-group">
+              <input type="text" name="value" class="form-control" placeholder="Number Value...">
+              <span class="input-group-btn">
+                <button type="submit" data-method="POST" class="btn btn-default">Send Data</button>
+                <button type="submit" data-method="GET" class="btn btn-success">Retrieve Data</button>
+              </span>
+          </div><!-- /input-group -->
+          </form>
+        </div><!-- /.col-lg-6 -->
+
+        <!-- Showing server response -->
+        <div class="col-lg-6">
+          <h3>Server response</h3>
+          <pre id="server-response"></pre>
+        </div><!-- /.col-lg-6 -->
+
+      </div><!-- /.row -->
+
+
+      <!-- Set credentials modal -->
+      <div class="modal fade" id="credentialsModal" tabindex="-1" role="dialog" aria-labelledby="credentialsModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="credentialsModalLabel">Set Credentials</h4>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <p><a href="https://wotkit.sensetecnic.com/wotkit/keys">https://wotkit.sensetecnic.com/wotkit/keys</a></p>
+              <form data-async data-target="#auth-response" data-modal="true" action="/auth" method="POST">
+                <div class="form-group">
+                  <label for="keyId">Key Id</label>
+                  <input type="text" name="key_id" class="form-control" placeholder="Key Id"/>
+                </div>
+                <div class="form-group">
+                  <label for="keyPassword">Key Password</label>
+                  <input type="password" name="key_password" class="form-control" placeholder="Key Password"/>
+                </div>
+                <div class="form-group">
+                  <label for="keyPassword">Sensor</label>
+                  <input type="text" name="sensor_name" class="form-control" placeholder="Sensor Name, e.g. calderonroberto.demo" value="calderonroberto.demo"/>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal -->
+
+    </div><!-- /.container -->
+
+    <!-- We load JS at the end for faster loading times -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Include the JS file from this project-->
+    <script src="static/js/example.js"></script>
+
+  </body>
+</html>
